@@ -1,4 +1,5 @@
-name: Build Android APK
+name: Build Debug APK        
+
 
 on:
   workflow_dispatch:
@@ -24,7 +25,7 @@ jobs:
           gradle-version: '8.7'
 
       - name: Build Debug APK
-        run: gradle assembleDebug
+        run: gradle assembleDebug -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
